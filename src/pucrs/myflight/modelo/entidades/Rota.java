@@ -13,6 +13,7 @@ public class Rota {
 		this.aeronave = aeronave;		
 	}	
 	
+	
 	public CiaAerea getCia() {
 		return cia;
 	}
