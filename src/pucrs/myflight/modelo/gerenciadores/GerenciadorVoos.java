@@ -6,30 +6,30 @@ import java.util.ArrayList;
 import pucrs.myflight.modelo.entidades.Voo;
 
 public class GerenciadorVoos {
-    private ArrayList<Voo> v;
+    private ArrayList<Voo> voos;
 
     public GerenciadorVoos() {
-        this.v = new ArrayList<Voo>();
+        this.voos = new ArrayList<>();
     }
 
     public void adicionar(Voo voo) {
-        v.add(voo);
+        this.voos.add(voo);
     }
 
     public ArrayList<Voo> listarTodos() {
-        return v;
+        return this.voos;
     }
 
-    public ArrayList<Voo> buscarData(LocalDate data){
-        ArrayList<Voo> aux = new ArrayList<Voo>();
+    public ArrayList<Voo> buscarPorDatahora(LocalDate datahora){
+        ArrayList<Voo> aux = new ArrayList<>();
 
-        for (Voo voo : v) {
-            // LocalDateTime = data + hora
+        for (Voo voo : this.voos) {
             // LocalDate     = data
+            // LocalDateTime = data + hora
 
-            LocalDate dataDoVoo = voo.getDatahora().toLocalDate();
+            LocalDate data = voo.getDatahora().toLocalDate();
 
-            if (data.isEqual(dataDoVoo)) aux.add(voo);
+            if (datahora.isEqual(data)) aux.add(voo);
         }
 
         return aux;

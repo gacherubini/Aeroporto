@@ -10,10 +10,10 @@ public class Geo {
 	}
 	
 	public double getLatitude() {
-		return latitude;
+		return this.latitude;
 	}
 	
 	public double getLongitude() {
-		return longitude;
+		return this.longitude;
 	}
 }

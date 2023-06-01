@@ -4,22 +4,22 @@ public class Aeronave {
 	private String codigo;
 	private String descricao;
 	private int capacidade;
-	
+
 	public Aeronave(String codigo, String descricao, int capacidade) {
 		this.codigo = codigo;
 		this.descricao = descricao;
 		this.capacidade = capacidade;
 	}
-	
+
 	public String getCodigo() {
-		return codigo;
+		return this.codigo;
 	}
-	
+
 	public String getDescricao() {
-		return descricao;
+		return this.descricao;
 	}
-	
+
 	public int getCapacidade() {
-		return capacidade;
+		return this.capacidade;
 	}
 }

@@ -10,10 +10,10 @@ public class CiaAerea {
 	}
 	
 	public String getCodigo() {
-		return codigo;
+		return this.codigo;
 	}
 	
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}	
 }

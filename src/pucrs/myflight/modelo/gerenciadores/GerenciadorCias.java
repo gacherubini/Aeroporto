@@ -6,13 +6,13 @@ import java.nio.charset.Charset;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.Files;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 import pucrs.myflight.modelo.entidades.CiaAerea;
 
 public class GerenciadorCias {
     private static GerenciadorCias INSTANCE;
-	private ArrayList<CiaAerea> c;
+    private HashMap<String, CiaAerea> ciasAereas;
 	
     public static GerenciadorCias getInstance() {
         if (INSTANCE == null) {
@@ -23,31 +23,23 @@ public class GerenciadorCias {
     }
     
 	public GerenciadorCias() {
-		c = new ArrayList<>();
+		this.ciasAereas =  new HashMap<>();
 	}
 
 	public void adicionar(CiaAerea ciaAerea) {
-        c.add(ciaAerea);
+        this.ciasAereas.put(ciaAerea.getNome(), ciaAerea);
+    }
+	
+    public HashMap<String, CiaAerea> listarTodos() {
+        return this.ciasAereas;
     }
 
-	public ArrayList<CiaAerea> listarTodos() {
-        return c;
-    }
+    // public CiaAerea buscarPorCodigo(String codigo) {
+    //     return this.ciasAereas.get(codigo);
+    // }
 
-	public CiaAerea buscarPorCodigo(String codigo) {
-        for (CiaAerea ciaArea : c) {
-            if (codigo.equals(ciaArea.getCodigo())) return ciaArea;
-        }
-
-        return null;
-    }
-
-	public CiaAerea buscarPorNome(String nome) {
-        for (CiaAerea ciaArea : c) {
-            if (nome.equals(ciaArea.getNome())) return ciaArea;
-        }
-
-        return null;
+    public CiaAerea buscarPorNome(String nome) {
+        return this.ciasAereas.get(nome);
     }
 
     public void carregarDados() throws Exception {

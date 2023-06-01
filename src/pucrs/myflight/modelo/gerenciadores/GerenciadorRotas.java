@@ -15,7 +15,7 @@ import pucrs.myflight.modelo.entidades.CiaAerea;
 
 public class GerenciadorRotas {
     private static GerenciadorRotas INSTANCE;
-    private ArrayList<Rota> r;
+    private ArrayList<Rota> rotas;
     
     public static GerenciadorRotas getInstance() {
         if (INSTANCE == null) {
@@ -26,22 +26,22 @@ public class GerenciadorRotas {
     }
     
     public GerenciadorRotas() {
-        this.r = new ArrayList<Rota>();
+        this.rotas = new ArrayList<>();
     }
 
     public void adicionar(Rota rota) {
-        r.add(rota);
+        this.rotas.add(rota);
     }
 
     public ArrayList<Rota> listarTodas() {
-        return r;
+        return this.rotas;
     }
 
-    public ArrayList<Rota> buscarPorOrigem(Aeroporto origem) {
-        ArrayList<Rota> aux = new ArrayList<Rota>();
+    public ArrayList<Rota> buscarPorAeroportoOrigem(String aeroportoOrigem) {
+        ArrayList<Rota> aux = new ArrayList<>();
 
-        for (Rota rota : r) {
-            if (origem.equals(rota.getOrigem())) aux.add(rota);
+        for (Rota rota : this.rotas) {
+            if (aeroportoOrigem.equals(rota.getAeroportoOrigem().getNome())) aux.add(rota);
         }
 
         return aux;

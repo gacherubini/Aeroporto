@@ -6,13 +6,13 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 import pucrs.myflight.modelo.entidades.Aeronave;
 
 public class GerenciadorAeronaves {
     private static GerenciadorAeronaves INSTANCE;
-    private ArrayList<Aeronave> a;
+    private HashMap<String, Aeronave> aeronaves;
 
     public static GerenciadorAeronaves getInstance() {
         if (INSTANCE == null) {
@@ -23,25 +23,19 @@ public class GerenciadorAeronaves {
     }
 
     public GerenciadorAeronaves() {
-        this.a = new ArrayList<Aeronave>();
+        this.aeronaves = new HashMap<>();
     }
 
     public void adicionar(Aeronave aeronave) {
-        a.add(aeronave);
+        this.aeronaves.put(aeronave.getCodigo(), aeronave);
     }
 
-    public ArrayList<Aeronave> listarTodos() {
-        return a;
+    public HashMap<String, Aeronave> listarTodos() {
+        return this.aeronaves;
     }
     
     public Aeronave buscarPorCodigo(String codigo) {
-        for (Aeronave aeronave : a) {
-            if (codigo.equals(aeronave.getCodigo())) {
-                return aeronave;
-            }
-        }
-        
-        return null;
+        return this.aeronaves.get(codigo);
     }
 
     public void carregarDados() throws Exception {

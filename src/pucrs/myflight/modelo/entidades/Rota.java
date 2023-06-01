@@ -1,32 +1,31 @@
 package pucrs.myflight.modelo.entidades;
 
 public class Rota {
-	private CiaAerea cia;
-	private Aeroporto origem;
-	private Aeroporto destino;
+	private CiaAerea ciaAerea;
+	private Aeroporto aeroportoOrigem;
+	private Aeroporto aeroportoDestino;
 	private Aeronave aeronave;
 	
-	public Rota(CiaAerea cia, Aeroporto origem, Aeroporto destino, Aeronave aeronave) {
-		this.cia = cia;
-		this.origem = origem;
-		this.destino = destino;
+	public Rota(CiaAerea ciaAerea, Aeroporto aeroportoOrigem, Aeroporto aeroportoDestino, Aeronave aeronave) {
+		this.ciaAerea = ciaAerea;
+		this.aeroportoOrigem = aeroportoOrigem;
+		this.aeroportoDestino = aeroportoDestino;
 		this.aeronave = aeronave;		
 	}	
 	
-	
-	public CiaAerea getCia() {
-		return cia;
+	public CiaAerea getCiaAerea() {
+		return this.ciaAerea;
 	}
 	
-	public Aeroporto getDestino() {
-		return destino;
+	public Aeroporto getAeroportoDestino() {
+		return this.aeroportoDestino;
 	}
 	
-	public Aeroporto getOrigem() {
-		return origem;
+	public Aeroporto getAeroportoOrigem() {
+		return this.aeroportoOrigem;
 	}
 	
 	public Aeronave getAeronave() {
-		return aeronave;
+		return this.aeronave;
 	}
 }

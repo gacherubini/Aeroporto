@@ -6,14 +6,14 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 import pucrs.myflight.modelo.entidades.Aeroporto;
 import pucrs.myflight.modelo.entidades.Geo;
 
 public class GerenciadorAeroportos {
     private static GerenciadorAeroportos INSTANCE;
-    private ArrayList<Aeroporto> a;
+    private HashMap<String, Aeroporto> aeroportos;
 
     public static GerenciadorAeroportos getInstance() {
         if (INSTANCE == null) {
@@ -24,24 +24,19 @@ public class GerenciadorAeroportos {
     }
     
     public GerenciadorAeroportos() {
-        this.a = new ArrayList<Aeroporto>();
+        this.aeroportos = new HashMap<>();
     }
 
     public void adicionar(Aeroporto aeroporto) {
-        a.add(aeroporto);
+        this.aeroportos.put(aeroporto.getCodigo(), aeroporto);
     }
 
-    public ArrayList<Aeroporto> listarTodos() {
-        return a;
+    public HashMap<String, Aeroporto> listarTodos() {
+        return this.aeroportos;
     }
 
     public Aeroporto buscarPorCodigo(String codigo) {
-        for (Aeroporto aeroporto : a) {
-            if (codigo.equals(aeroporto.getCodigo())) 
-            return aeroporto;
-        }
-
-        return null;
+        return this.aeroportos.get(codigo); 
     }
 
     public void carregarDados() throws Exception {
@@ -60,9 +55,9 @@ public class GerenciadorAeroportos {
                 double latitude = Double.parseDouble(data[1]);
                 double longitude = Double.parseDouble(data[2]);
 
-                Geo geo = new Geo(latitude, longitude);
+                Geo local = new Geo(latitude, longitude);
 
-                Aeroporto aeroporto = new Aeroporto(data[0], data[3], geo);
+                Aeroporto aeroporto = new Aeroporto(data[0], data[3], local);
 
                 this.adicionar(aeroporto);
             }
